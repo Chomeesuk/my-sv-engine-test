@@ -9,31 +9,34 @@
     <link rel="stylesheet" href="https://sharevalue.github.io/assets/index.66316279.css">
     
     <style>
-      /* 🚫 레거시 동영상 영역 강제 완전 삭제 */
-      video, .video-background, .video-container, .main-video {
+      /* 🚫 동영상 태그 및 동영상 배경 영역을 완전히 숨깁니다 */
+      video, 
+      .video-background, 
+      .video-container, 
+      .main-video,
+      section video {
         display: none !important;
       }
 
-      /* ✍️ 대표님이 원하는 새로운 문구를 위한 스타일 고정 */
-      .vibe-fixed-hero {
-        position: relative;
-        z-index: 9999 !important; /* 기존 시스템보다 무조건 위에 띄우기 */
-        padding: 100px 20px;
+      /* ✍️ 동영상 대신 들어갈 대표님만의 세련된 문구 디자인 */
+      .vibe-new-box {
+        padding: 80px 20px;
         text-align: center;
-        background: #ffffff; /* 깔끔한 화이트 배경 */
-        margin-top: 100px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        margin: 40px auto;
+        max-width: 800px;
       }
-
-      .vibe-fixed-title {
-        font-size: 3rem !important;
+      .vibe-new-title {
+        font-size: 2.8rem !important;
         font-weight: 800 !important;
         color: #152038 !important;
         line-height: 1.4 !important;
         margin-bottom: 20px !important;
       }
-
-      .vibe-fixed-subtitle {
-        font-size: 1.4rem !important;
+      .vibe-new-subtitle {
+        font-size: 1.3rem !important;
         color: #5b6e81 !important;
         line-height: 1.6 !important;
       }
@@ -43,31 +46,39 @@
     
     <div id="app"></div>
 
-    <div class="vibe-fixed-hero">
-      <h1 class="vibe-fixed-title">
-        더 가볍고 세련되게 진화한<br>
-        <span style="color: #00b0ec;">쉐어밸류 차세대 부킹엔진</span>
-      </h1>
-      <p class="vibe-fixed-subtitle">
-        정신없던 레거시 동영상을 걷어내고 본질만 담았습니다.<br>
-        대표님이 직접 리드하는 바이브 코딩 실험실입니다.
-      </p>
-    </div>
-
     <script type="module" crossorigin src="https://sharevalue.github.io/assets/index.b271c582.js"></script>
 
     <script>
-      // 기존 시스템이 켜진 후, 옛날 동영상 박스를 지우고 위 새 텍스트를 메인에 딱 꽂아넣는 마법의 스크립트
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          const legacySection = document.querySelector('section');
-          const myHero = document.querySelector('.vibe-fixed-hero');
-          if (legacySection && myHero) {
-            legacySection.parentNode.insertBefore(myHero, legacySection);
-            legacySection.style.display = 'none';
-          }
-        }, 300); // 0.3초 대기 후 교체
-      });
+      function replaceVideoWithText() {
+        // 기존 동영상이 들어있는 섹션이나 박스를 찾습니다.
+        const targetSection = document.querySelector('section') || document.querySelector('.video-container');
+        
+        if (targetSection) {
+          // 동영상 섹션 내부를 대표님의 세련된 텍스트 박스로 강제 교체합니다!
+          targetSection.innerHTML = `
+            <div class="vibe-new-box">
+              <h1 class="vibe-new-title">
+                더 가볍고 세련되게 진화한<br>
+                <span style="color: #00b0ec;">쉐어밸류 차세대 부킹엔진</span>
+              </h1>
+              <p class="vibe-new-subtitle">
+                정신없던 레거시 동영상을 걷어내고 본질만 담았습니다.<br>
+                대표님이 직접 리드하는 바이브 코딩 실험실입니다.
+              </p>
+            </div>
+          `;
+          // 숨겨졌던 동영상 잔재들을 한 번 더 확실히 지웁니다.
+          const videos = document.querySelectorAll('video');
+          videos.forEach(v => v.remove());
+        } else {
+          // 화면이 아직 안 그려졌으면 0.1초 뒤에 다시 시도합니다.
+          setTimeout(replaceVideoWithText, 100);
+        }
+      }
+
+      // 화면 로딩 시작 시 실행
+      window.addEventListener('DOMContentLoaded', replaceVideoWithText);
+      window.addEventListener('load', replaceVideoWithText);
     </script>
   </body>
 </html>
