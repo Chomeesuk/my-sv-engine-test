@@ -1,84 +1,196 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="https://sharevalue.github.io/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>쉐어밸류 - 부킹엔진 (Vibe Coding)</title>
-    
-    <link rel="stylesheet" href="https://sharevalue.github.io/assets/index.66316279.css">
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쉐어밸류 - 부킹엔진</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
     <style>
-      /* 🚫 동영상 태그 및 동영상 배경 영역을 완전히 숨깁니다 */
-      video, 
-      .video-background, 
-      .video-container, 
-      .main-video,
-      section video {
-        display: none !important;
-      }
-
-      /* ✍️ 동영상 대신 들어갈 대표님만의 세련된 문구 디자인 */
-      .vibe-new-box {
-        padding: 80px 20px;
-        text-align: center;
-        background: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        margin: 40px auto;
-        max-width: 800px;
-      }
-      .vibe-new-title {
-        font-size: 2.8rem !important;
-        font-weight: 800 !important;
-        color: #152038 !important;
-        line-height: 1.4 !important;
-        margin-bottom: 20px !important;
-      }
-      .vibe-new-subtitle {
-        font-size: 1.3rem !important;
-        color: #5b6e81 !important;
-        line-height: 1.6 !important;
-      }
-    </style>
-  </head>
-  <body>
-    
-    <div id="app"></div>
-
-    <script type="module" crossorigin src="https://sharevalue.github.io/assets/index.b271c582.js"></script>
-
-    <script>
-      function replaceVideoWithText() {
-        // 기존 동영상이 들어있는 섹션이나 박스를 찾습니다.
-        const targetSection = document.querySelector('section') || document.querySelector('.video-container');
-        
-        if (targetSection) {
-          // 동영상 섹션 내부를 대표님의 세련된 텍스트 박스로 강제 교체합니다!
-          targetSection.innerHTML = `
-            <div class="vibe-new-box">
-              <h1 class="vibe-new-title">
-                더 가볍고 세련되게 진화한<br>
-                <span style="color: #00b0ec;">쉐어밸류 차세대 부킹엔진</span>
-              </h1>
-              <p class="vibe-new-subtitle">
-                정신없던 레거시 동영상을 걷어내고 본질만 담았습니다.<br>
-                대표님이 직접 리드하는 바이브 코딩 실험실입니다.
-              </p>
-            </div>
-          `;
-          // 숨겨졌던 동영상 잔재들을 한 번 더 확실히 지웁니다.
-          const videos = document.querySelectorAll('video');
-          videos.forEach(v => v.remove());
-        } else {
-          // 화면이 아직 안 그려졌으면 0.1초 뒤에 다시 시도합니다.
-          setTimeout(replaceVideoWithText, 100);
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #ffffff;
+            color: #152038;
+            -webkit-font-smoothing: antialiased;
         }
-      }
 
-      // 화면 로딩 시작 시 실행
-      window.addEventListener('DOMContentLoaded', replaceVideoWithText);
-      window.addEventListener('load', replaceVideoWithText);
-    </script>
-  </body>
+        /* 🔹 1. 공식 홈페이지와 100% 똑같은 상단 헤더 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #f0f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-sizing: border-box;
+            z-index: 10000;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #152038;
+            letter-spacing: -0.5px;
+        }
+        nav {
+            display: flex;
+            gap: 35px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #5b6e81;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a.active {
+            color: #00b0ec;
+            font-weight: 700;
+        }
+        nav a:hover {
+            color: #00b0ec;
+        }
+        .header-btn {
+            background-color: #00b0ec;
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .header-btn:hover {
+            background-color: #009ad0;
+        }
+
+        /* 🔹 2. 🌟 레거시 동영상을 대체하는 세련된 텍스트 메인 영역 */
+        .hero-section {
+            margin-top: 80px;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f4fbc8 50%, #e6f7fd 100%);
+            padding: 0 20px;
+        }
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #152038;
+            line-height: 1.4;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+        .hero-title span {
+            color: #00b0ec;
+        }
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #5b6e81;
+            line-height: 1.6;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+        .hero-btn {
+            background-color: #152038;
+            color: #ffffff;
+            border: none;
+            padding: 16px 36px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(21, 32, 56, 0.2);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .hero-btn:hover {
+            background-color: #233252;
+            transform: translateY(-2px);
+        }
+
+        /* 🔹 3. 공식 홈페이지와 100% 똑같은 하단 푸터 */
+        footer {
+            background-color: #152038;
+            color: #ffffff;
+            padding: 60px 40px;
+            font-size: 14px;
+            line-height: 1.8;
+            box-sizing: border-box;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .footer-info {
+            color: #98a2ac;
+            font-weight: 300;
+        }
+        .footer-copyright {
+            margin-top: 20px;
+            color: #5b6e81;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-area">
+            <span class="logo-text">SHAREVALUE</span>
+        </a>
+        <nav>
+            <a href="#" class="active">부킹엔진</a>
+            <a href="#">백오피스</a>
+            <a href="#">고객센터</a>
+        </nav>
+        <button class="header-btn">가입문의</button>
+    </header>
+
+    <section class="hero-section">
+        <h1 class="hero-title">
+            트렌디한 여행 비즈니스의 시작<br>
+            <span>범용 온라인 항공 예약 솔루션</span>
+        </h1>
+        <p class="hero-subtitle">
+            복잡한 예약 API 연동부터 안정적인 여행상품 백오피스까지,<br>
+            무거운 레거시 동영상은 덜어내고 본질에만 집중합니다.
+        </p>
+        <button class="hero-btn">엔진 시연 신청하기</button>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">(주) 쉐어밸류</div>
+            <div class="footer-info">
+                사업자등록번호 : 750-86-00899 | 통신판매업번호 : 제2020-서울중구-1067호<br>
+                주소 : 서울특별시 중구 정동길 35, 3층 302호(정동, 두비빌딩) | 대표 : 조미숙
+            </div>
+            <div class="footer-copyright">
+                Copyright © 2020 Sharevalue Co., Ltd. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
 </html>
