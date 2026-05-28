@@ -15,7 +15,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 🔹 1. 공식 홈페이지와 100% 똑같은 상단 헤더 */
+        /* 🔹 1. 공식 홈페이지와 100% 똑같은 상단 헤더 메뉴 */
         header {
             position: fixed;
             top: 0;
@@ -28,19 +28,16 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
             box-sizing: border-box;
             z-index: 10000;
-        }
-        .logo-area {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
         }
         .logo-text {
             font-size: 20px;
             font-weight: 700;
             color: #152038;
             letter-spacing: -0.5px;
+            text-decoration: none;
         }
         nav {
             display: flex;
@@ -69,22 +66,18 @@
             font-weight: 700;
             border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .header-btn:hover {
-            background-color: #009ad0;
         }
 
-        /* 🔹 2. 🌟 레거시 동영상을 대체하는 세련된 텍스트 메인 영역 */
+        /* 🔹 2. 🌟 레거시 동영상을 대체하는 세련된 그라데이션 메인 영역 */
         .hero-section {
             margin-top: 80px;
-            height: 70vh;
+            height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(135deg, #ffffff 0%, #f4fbc8 50%, #e6f7fd 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #e6f7fd 100%);
             padding: 0 20px;
         }
         .hero-title {
@@ -115,11 +108,6 @@
             border-radius: 30px;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(21, 32, 56, 0.2);
-            transition: transform 0.2s, background-color 0.2s;
-        }
-        .hero-btn:hover {
-            background-color: #233252;
-            transform: translateY(-2px);
         }
 
         /* 🔹 3. 공식 홈페이지와 100% 똑같은 하단 푸터 */
@@ -156,9 +144,7 @@
 <body>
 
     <header>
-        <a href="#" class="logo-area">
-            <span class="logo-text">SHAREVALUE</span>
-        </a>
+        <a href="#" class="logo-text">SHAREVALUE</a>
         <nav>
             <a href="#" class="active">부킹엔진</a>
             <a href="#">백오피스</a>
