@@ -1,142 +1,67 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>쉐어밸류 - 부킹엔진</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="https://sharevalue.github.io/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>쉐어밸류 - 부킹엔진 (Vibe Coding)</title>
+    
+    <link rel="stylesheet" href="https://sharevalue.github.io/assets/index.66316279.css">
+    
     <style>
-        body {
-            margin: 0;
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f8f9fa;
-            color: #152038;
-        }
-        /* 상단 헤더 영역 */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 50px;
-            box-sizing: border-box;
-            z-index: 100;
-        }
-        .logo {
-            font-size: 22px;
-            font-weight: 700;
-            color: #00b0ec;
-            text-decoration: none;
-        }
-        nav a {
-            margin: 0 20px;
-            text-decoration: none;
-            color: #5b6e81;
-            font-weight: 400;
-        }
-        nav a.active {
-            color: #00b0ec;
-            font-weight: 700;
-        }
-        .header-btn {
-            background-color: #00b0ec;
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            font-size: 15px;
-            font-weight: 700;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        .header-btn:hover {
-            opacity: 0.85;
-        }
+      /* 🚫 레거시 동영상을 강제로 숨깁니다 */
+      video, .video-background, .video-container {
+        display: none !important;
+      }
 
-        /* 🌟 메인 비주얼 영역 (레거시 동영상 제거 버전) */
-        .main-hero {
-            margin-top: 70px;
-            padding: 120px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #ffffff 0%, #e6f7fd 100%);
-        }
-        .main-hero h1 {
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 1.4;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-        .main-hero p {
-            font-size: 20px;
-            color: #5b6e81;
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
-        .cta-btn {
-            background-color: #00b0ec;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 18px;
-            font-weight: 700;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 176, 232, 0.3);
-        }
+      /* ✨ 동영상 대신 들어갈 세련된 배경과 텍스트 설정 */
+      .vibe-hero-section {
+        height: 80vh; /* 화면의 80% 정도 높이 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e6f7fd 100%);
+        text-align: center;
+        padding-top: 80px;
+      }
 
-        /* 푸터 영역 */
-        footer {
-            background-color: #00264b;
-            color: #ffffff;
-            padding: 40px 50px;
-            text-align: left;
-            font-size: 14px;
-        }
-        .footer-logo {
-            font-size: 18px;
-            font-weight: 700;
-            color: #98a2ac;
-            margin-bottom: 15px;
-        }
-        .footer-desc {
-            color: #5b6e81;
-            line-height: 1.8;
-        }
+      .vibe-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: #152038;
+        line-height: 1.3;
+        margin-bottom: 24px;
+        animation: fadeIn 1s ease-out;
+      }
+
+      .vibe-subtitle {
+        font-size: 1.5rem;
+        color: #5b6e81;
+        margin-bottom: 48px;
+        animation: fadeIn 1.5s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
     </style>
-</head>
-<body>
-
-    <header>
-        <a href="#" class="logo">쉐어밸류</a>
-        <nav>
-            <a href="#" class="active">부킹엔진</a>
-            <a href="#">백오피스</a>
-            <a href="#">고객센터</a>
-        </nav>
-        <button class="header-btn">가입문의</button>
-    </header>
-
-    <section class="main-hero">
-        <h1>트렌디한 여행 비즈니스의 시작<br><span style="color: #00b0ec;">범용 온라인 항공 예약 솔루션</span></h1>
-        <p>복잡한 예약 API 연동부터 안정적인 여행상품 백오피스까지,<br>쉐어밸류 엔진 하나로 완벽하게 제어하세요.</p>
-        <button class="cta-btn">지금 시작하기</button>
-    </section>
-
-    <footer>
-        <div class="footer-logo">(주) 쉐어밸류</div>
-        <div class="footer-desc">
-            사업자등록번호 : 750-86-00899 | 통신판매업번호 : 제2020-서울중구-1067호<br>
-            주소 : 서울특별시 중구 정동길 35, 3층 302호(정동, 두비빌딩) | 대표 : 조미숙<br>
-            <span style="font-size: 12px; color: #5b6e81;">Copyright 2020 Sharevalue Co., Ltd. All rights reserved</span>
+  </head>
+  <body>
+    <div id="app">
+      <div class="vibe-hero-section">
+        <h1 class="vibe-title">
+          동영상 없이 더 빠르고 세련된<br>
+          <span style="color: #00b0ec;">쉐어밸류 부킹엔진</span>
+        </h1>
+        <p class="vibe-subtitle">
+          불필요한 레거시는 덜어내고, 본질에 집중합니다.<br>
+          지금 가장 트렌디한 여행 비즈니스를 만나보세요.
+        </p>
         </div>
-    </footer>
+    </div>
 
-</body>
+    <script type="module" crossorigin src="https://sharevalue.github.io/assets/index.b271c582.js"></script>
+  </body>
 </html>
